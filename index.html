@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fundacion de Viejitos (Plain)</title>
+</head>
+
+<body>
+
+  <section id="body">
+    <h2>Gestión de Fundacion de Viejitos</h2>
+  
+    <hr>
+    <table border="5" style="width: 100%; text-align: center;">
+      <thead>
+        <tr>
+          <th>Donante</th>
+          <th>Dolares Aportados</th>
+          <th>Bolivares Aportados</th>
+          <th>Total en Dolares</th>
+          <th>Total en Bolivares</th>
+        </tr>
+      </thead>
+      <tbody id="body_tdDonantes"></tbody>
+    </table>
+
+    <hr>
+
+    <div>
+      <strong>Total Final</strong> $.<span id="body_lblTotalDolares">0</span> Bs. <span id="body_lblTotalBolivares">0</span>
+    </div>
+
+    <div>
+      <strong>Nombre del Mejor Donador:</strong> <span id="body_lblMejorDonante">0</span>
+    </div>
+    <hr>
+
+    <button id="body_btNuevoDonante">Nuevo Donante</button>
+  </section>
+
+  <section id="donante" hidden style="margin-top: 20px solid; border: 1px solid #ccc; padding: 15px; width: 300px;">
+    <h5 id="donante_lblDonante">Procesar donante</h5>
+    <div>
+      <label>Nombre del Donante:
+        <input type="text" id="donante_inNombre" placeholder="Oswal">
+      </label>
+    </div>
+
+    <div>
+      <label>Dolares Aportados Por El Donante:
+        <input type="number" id="donante_inDolares" placeholder="Ej: 50">
+      </label>
+    </div>
+    <div>
+      <label>Bolivares Aportados Por El Donante:
+        <input type="number" id="donante_inBolivares" placeholder="Ej: 120">
+      </label>
+    </div>
+    
+    <button type="button" id="donante_btCancelar"><strong>Cancelar</strong></button>
+    <button type="button" id="donante_btAceptar"><strong>Aceptar</strong></button>
+  </section>
+
+  <script type="module">
+    // Importamos los Controladores
+            import Cl_cFundacion from "./dist/controllers/Cl_cFundacion.js";
+            import Cl_cDonante from "./dist/controllers/Cl_cDonante.js";
+
+        // Importamos las Vistas Plain
+            import Cl_vFundacionPlain from "./dist/views/Cl_vFundacionPlain.js";
+            import Cl_vDonantePlain from "./dist/views/Cl_vDonantePlain.js";
+
+        // Instanciamos Las Vistas
+            const vistaFundacion = new Cl_vFundacionPlain();
+            const vistaDonante = new Cl_vDonantePlain();
+
+        // Inyectamos Las Vistas a los Controladores
+            const controladorDonante = new Cl_cDonante(vistaDonante);
+                new Cl_cFundacion(vistaFundacion, controladorDonante);
+  </script>
+
+</body>
+
+</html>
